@@ -15,8 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index']);
-Route::post('/insert_kategori', [HomeController::class, 'insert']);
-Route::get('/insert_kategori/{category:slug}', [HomeController::class, 'populate']);
+Route::post('/insert_kategori', [HomeController::class, 'insert'])->name('insert.data');
+Route::get('/insert_kategori/{category:slug}', [HomeController::class, 'populate'])->name('populate.data');
+Route::post('/delete_kategori/{slug}', [HomeController::class, 'delete'])->name('delete.data');
 
 Route::get('/login', function () {
     $mydata = [];

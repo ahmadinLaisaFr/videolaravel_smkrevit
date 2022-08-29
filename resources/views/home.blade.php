@@ -38,7 +38,15 @@
         <h2 class="text-3xl">Category Name</h2>
         @foreach ($categories as $categori)
         <div class="gap-4 flex my-5 items-center">
-            <li>{{ $categori->name }}=>{{ $categori->slug }}</li><a class="p-1 px-3 rounded-lg bg-orange-400" href="{{ url("/insert_kategori/$categori->slug")}}"type="submit">Update</a>
+            <li>{{ $categori->name }}=>{{ $categori->slug }}</li>
+            <form action="{{ route('populate.data', ['category' => $categori->slug]) }}" method="get">
+                @csrf
+                <button class="p-1 px-3 rounded-lg bg-orange-400" type="submit">Update</button>
+            </form>
+            <form action="{{ route('delete.data', ['slug' => $categori->slug]) }}" method="POST">
+                @csrf
+                <button class="p-1 px-3 rounded-lg bg-orange-400" type="submit" _method="DELETE">Delete</button>
+            </form>
         </div>
         @endforeach
     </div>

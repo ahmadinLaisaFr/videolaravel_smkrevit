@@ -46,4 +46,12 @@ class HomeController extends Controller
         // var_dump($category->name);
         return redirect()->back()->with('populate', $category);
     }
+
+    public function delete(Request $request)
+    {
+        // var_dump($category->slug);
+        // var_dump($category->name);
+        DB::table('categories')->where('slug', $request->slug)->delete();
+        return redirect()->back();
+    }
 }
